@@ -2,15 +2,16 @@ import React from 'react'
 
 
 type ButtonProps ={
-    variant ?:string,
+
     children:string
+    action:()=>void
 
 }
 
 
- export const Button = ({variant,children}: ButtonProps) => {
+ export const Button = ({children,action}: ButtonProps) => {
   return (
-  <Button variant={variant}>{children}</Button>
+  <button onClick={action}>{children}</button>
 
   )
 }

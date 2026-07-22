@@ -8,19 +8,9 @@ function App() {
 
   return (
     <>
-    damnjdngdp
-    <div id='app-container'>
-      
-          
-      <div id='scrollable'>
-        <Form/>
-      
-      
-
-
-      </div>
-    </div>
-  
+<p>nbhvgcfgvhbj</p>
+<Form/>
+<Navbar/>
     </>
   )
 }
