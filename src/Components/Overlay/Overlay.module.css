@@ -1,0 +1,13 @@
+.overlay{
+    position: absolute;
+    width:100vw;
+    height:100vh;
+    ba ckground-color: rgb(0,0,0,o.5);
+
+
+
+
+}
+.overlay-child{
+    position: relative;
+}

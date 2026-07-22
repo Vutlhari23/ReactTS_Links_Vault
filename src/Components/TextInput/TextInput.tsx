@@ -5,11 +5,11 @@ import styles from './TextInput.module.css'
 type InputProps = {
     id: string,
     value?: string | number,
-    label : string,
-    name : string,
+    label ?: string,
+    name? : string,
     error?: string,
-    style: React.CSSProperties,
-    onChange : React.ChangeEventHandler<HTMLInputElement>,
+    style?: React.CSSProperties,
+    onChange ?: React.ChangeEventHandler<HTMLInputElement>,
 
 }
 export const TextInput =({id,value,label,name, style,onChange,error} : InputProps)=>{
