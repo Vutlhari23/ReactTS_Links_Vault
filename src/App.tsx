@@ -1,5 +1,4 @@
 
-import './App.css'
 import { Navbar} from './Components/Navbar/Navbar'
 import {Form} from './Components/Form/Form'
 
@@ -12,9 +11,10 @@ function App() {
     damnjdngdp
     <div id='app-container'>
       
-           <Navbar/>
+          
       <div id='scrollable'>
         <Form/>
+      
       
 
 
@@ -25,4 +25,5 @@ function App() {
   )
 }
 
-export default App       
+export default App
+ 
