@@ -6,7 +6,7 @@ export type OverLayProps ={
     close : () =>  void
 
 }
-export const overlay = ({children,close}: OverLayProps)=>{
+export const Overlay = ({children,close}: OverLayProps)=>{
     <div className={styles['overlay']}>
         <div className={styles['overlay-child']}>
         

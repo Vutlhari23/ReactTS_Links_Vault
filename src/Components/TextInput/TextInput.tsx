@@ -3,7 +3,7 @@ import styles from './TextInput.module.css'
 
 
 type InputProps = {
-    id: string,
+    id?: string,
     value?: string | number,
     label ?: string,
     name? : string,

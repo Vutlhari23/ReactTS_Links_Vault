@@ -1,35 +1,30 @@
 nav{
     position: fixed;
     top: 0;
-    background-color: rgb(24, 177, 177);
-
     height: 100px;
     width: 100%;
     left:0;
-    background-color: fde4cf;
-
-   
-
-    
+    background-color: rgb(24, 177, 177);
+  
 }
+
+
+
 .nav-content{
     display: flex;
     justify-content:space-between;
     align-items: center;
-
-
-
-
 }
+
+
 .links{
    gap: 10px;
-   
-  
-
 }
+
 .link{
  text-decoration: none;
  color:white;
  padding: 0px 10px;
 
 }
+
