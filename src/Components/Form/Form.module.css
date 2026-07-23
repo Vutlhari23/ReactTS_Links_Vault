@@ -1,6 +1,13 @@
 .form{
-    margin-top:300px;
+    margin-top:20px;
     height: 300px;
     width:400px;
-    background-color: blueviolet;
+    background-color: white;
+    border-radius: 30px;
+    border: 2px solid grey;
+    gap:10px;
+    align-items: center;
+    justify-content: center;
+
+
 }

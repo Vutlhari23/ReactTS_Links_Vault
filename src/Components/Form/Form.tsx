@@ -12,6 +12,9 @@ export const Form = () => {
   const [tag,setTag] = useState("");
   const [url,setUrl] = useState("");
   const [entry,setEntry] = useState("");
+  let savedLink =localStorage.getItem("entry");
+
+  const [submittedLink, setSubmittedLink] = useState([]);
   return (
     <ContentContainer  className={styles.form}>
         
@@ -21,6 +24,9 @@ export const Form = () => {
         <TextInput  value={url} onChange={(e)=>setUrl(e.target.value)} label='URL'/>
         <TextInput  value={description} onChange={(e)=>setDescription(e.target.value)}label='Description'/>
         <TextInput  value={tag} onChange={(e)=>setTag(e.target.value)}label='Optional Tags'/>
+       <p>{savedLink}</p>
+       
+       
         <Button action={()=>{
           if(localStorage.getItem("count")){
 
@@ -31,6 +37,8 @@ export const Form = () => {
           localStorage.setItem("entry"+localStorage.getItem("count"),entry);
          
           localStorage.setItem("count", String(Number(localStorage.getItem("count"))+1));
+          savedLink =localStorage.getItem("entry");
+          
 
         }}>Add Link</Button>
 

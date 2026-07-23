@@ -4,7 +4,7 @@ import React from 'react'
 type ButtonProps ={
 
     children:string
-    action:()=>void
+    action ?:()=>void
 
 }
 

@@ -23,7 +23,5 @@ export const TextInput =({id,value,label,name, style,onChange,error} : InputProp
 
         </div>
     )
-
-
-      
+  
 }
