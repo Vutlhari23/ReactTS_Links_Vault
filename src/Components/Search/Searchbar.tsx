@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './Search.module.css'
 import {Text} from '../Text/Text'
 import { TextInput } from '../TextInput/TextInput'
-import "bootstrap-icons/font/bootstrap-icons.css"
+
  export const Searchbar = () => {
   return (
     <div className={styles['search-bar']}>

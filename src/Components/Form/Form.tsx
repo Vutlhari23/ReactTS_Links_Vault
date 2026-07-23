@@ -4,7 +4,7 @@ import { TextInput } from '../TextInput/TextInput'
 import {Button} from '../Button/Button'
 import { Text } from '../Text/Text'
 import styles from './Form.module.css'
-import 'bootstrap-icons/font/bootstrap-icons.css';
+
 
 
 export const Form = () => {
@@ -30,15 +30,11 @@ export const Form = () => {
        
        
         <Button action={()=>{
-          if(localStorage.getItem("count")){
 
-          }else{
-            localStorage.setItem("count","1");
-          }
           const entry = title+","+url+","+description+","+tag;
-          localStorage.setItem("entry"+localStorage.getItem("count"),entry);
+          localStorage.setItem(title,entry);
          
-          localStorage.setItem("count", String(Number(localStorage.getItem("count"))+1));
+         
           savedLink =localStorage.getItem("entry");
           
 
