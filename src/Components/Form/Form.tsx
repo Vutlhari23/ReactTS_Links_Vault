@@ -4,6 +4,7 @@ import { TextInput } from '../TextInput/TextInput'
 import {Button} from '../Button/Button'
 import { Text } from '../Text/Text'
 import styles from './Form.module.css'
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 
 export const Form = () => {
@@ -14,11 +15,12 @@ export const Form = () => {
   const [entry,setEntry] = useState("");
   let savedLink =localStorage.getItem("entry");
 
-  const [submittedLink, setSubmittedLink] = useState([]);
+
   return (
     <ContentContainer  className={styles.form}>
+      <i className="bi bi-x"></i>
         
-        <Text>Add Link</Text>
+        <Text>Add  a Link</Text>
 
         <TextInput value={title} onChange={(e)=>setTitle(e.target.value)} label='Title'/>
         <TextInput  value={url} onChange={(e)=>setUrl(e.target.value)} label='URL'/>
@@ -56,9 +58,6 @@ export const Form = () => {
           if(linkSplit){
       
             setTitle(linkSplit[0]);
-
-
-          
           
             setUrl(linkSplit[1]);
       

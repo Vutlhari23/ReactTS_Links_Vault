@@ -14,11 +14,10 @@ export const Navbar = ({ showAddForm }: NavbarProps) => {
             <ContentContainer className={styles["nav-content"]}>
                 <Text variant="h2">LinkVault</Text>
 
-                <div className={styles.links}>
+            
                     <Button action={showAddForm}>
                         Add New Link
-                    </Button>
-                </div>
+                    </Button>    
             </ContentContainer>
         </nav>
     );
