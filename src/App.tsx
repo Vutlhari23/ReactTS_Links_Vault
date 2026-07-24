@@ -1,51 +1,105 @@
+import { useEffect, useState } from "react";
+import "./App.css";
+import { Navbar } from "./components/Navbar/Navbar";
+import { MainContent } from "./components/MainContent/MainContent";
+import { AddModal } from "./components/AddOverlayModal/AddModal";
 
-import { Navbar} from './Components/Navbar/Navbar'
-import {Form} from './Components/Form/Form'
-import Searchbar from './Components/Search/Searchbar'
-import { useEffect, useState } from 'react'
-import {Link} from './Components/Link/Link'
-import { Overlay } from './Components/Overlay/Overlay'
-
- type CardInfo = {
-    title: string,
-    url: string,
-    description: string,
-    tags: string,
-   
- } 
-
-function App() {
- const link: CardInfo[]=[];
-
- useEffect({
-  const link ={
-     title: 'Kings of swazi',
-    url: 'gg.com',
-    description: string,
-    tags: string,
-   
-          
-  }
-  link.append =
- 
-
- },[]);
-
-
-
-  
-
-
-  return (
-     <>
-   
-
-
-
-     </>
-
-  )
+export interface LinkItem {
+  id: string;
+  title: string;
+  url: string;
+  description: string;
+  tags?: string;
 }
 
-export default App
- 
+function App() {
+
+  const [links, setLinks] = useState<LinkItem[]>(() => {
+    const savedLinks = localStorage.getItem("vaultLinks");
+    if (savedLinks) return JSON.parse(savedLinks);
+    return [];
+  });
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const [linkToEdit, setLinkToEdit] = useState<LinkItem | null>(null);
+
+  useEffect(() => {
+    localStorage.setItem("vaultLinks", JSON.stringify(links));
+  }, [links]);
+
+
+
+  const handleSaveLink = (submittedLink: LinkItem) => {
+    if (linkToEdit) {
+      setLinks(
+        links.map((link) =>
+          link.id === submittedLink.id ? submittedLink : link,
+        ),
+      );
+    } else {
+      setLinks([...links, submittedLink]);
+    }
+
+    closeModal();
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setLinkToEdit(null);
+  };
+
+  const handleDeleteLink = (id: string) => {
+    setLinks(links.filter((link) => link.id !== id));
+  };
+
+  const openAddModal = () => {
+    setLinkToEdit(null);
+    setIsModalOpen(true);
+  };
+
+  const openEditModal = (link: LinkItem) => {
+    setLinkToEdit(link);
+    setIsModalOpen(true);
+  };
+
+  const filteredLinks = links.filter((link) => {
+    const query = searchQuery.toLowerCase();
+    const tagsMatch = link.tags
+      ? link.tags.toLowerCase().includes(query)
+      : false;
+
+    return (
+      link.title.toLowerCase().includes(query) ||
+      link.url.toLowerCase().includes(query) ||
+      link.description.toLowerCase().includes(query) ||
+      tagsMatch
+    );
+  });
+
+  return (
+    <div id="app-content">
+  
+
+      <MainContent
+        links={filteredLinks}
+    searchQuery={searchQuery} setSearchQuery={setSearchQuery} 
+        onDelete={handleDeleteLink}
+        onEdit={openEditModal}
+        onOpenAdd={openAddModal}
+      />
+
+      {isModalOpen && (
+        <AddModal
+          onClose={closeModal}
+          
+          onSubmit={handleSaveLink}
+          linkToEdit={linkToEdit}
+        />
+      )}
+    </div>
+  );
+}
+
+export default App;
