@@ -15,19 +15,20 @@ import { Overlay } from './Components/Overlay/Overlay'
  } 
 
 function App() {
- 
+ const link: CardInfo[]=[];
 
  useEffect({
-
- 
-
- link.push({
+  const link ={
      title: 'Kings of swazi',
     url: 'gg.com',
-    description: "",
-    tags: ''
+    description: string,
+    tags: string,
    
-          })
+          
+  }
+  link.append =
+ 
+
  },[]);
 
 
