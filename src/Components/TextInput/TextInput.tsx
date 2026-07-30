@@ -15,12 +15,12 @@ type TextInputProps ={
 
 }
 
-export const TextInput : React.FC<TextInputProps> =({value,onChange,label,error})=>{
+export const TextInput : React.FC<TextInputProps> =({value,onChange,label,error,placeholder})=>{
     return(
 
         <div className={styles['input-container']}>
             <label className={styles['input-label']}>{label}</label>
-            <input type='text'  value={value} onChange={onChange} className={styles.input}></input>
+            <input type='text'  value={value} onChange={onChange} className={styles.input} placeholder={placeholder}></input>
             {error && <span className={styles['input-error']}>{error}</span>}
         </div>
     )
