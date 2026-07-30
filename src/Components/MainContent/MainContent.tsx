@@ -113,7 +113,10 @@ setShowConfirmModal(false);
         ) : (
 
         //Display the links in a link Card
-          links.map((link) => (
+        <div className={styles['link-container']}>
+        
+          {
+          links.map( (link) => (
             <LinkCard
               onEdit={onEdit}
               openModal={openModal}
@@ -124,9 +127,12 @@ setShowConfirmModal(false);
               
              
             />
-          ))
+          ))}
+         </div>
         )}
+       
       </div>
+    
       {/*Renders the confirm modal */}
             {showConfirmModal && (
               <ConfirmationModel        //

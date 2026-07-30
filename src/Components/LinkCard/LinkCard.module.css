@@ -10,14 +10,14 @@
 
    
 
-.card-content p{
+.card-content p,h2{
 
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.card-content p:hover{
+.card-content p,h2:hover{
 
   white-space: normal;
   overflow: visible;
@@ -26,10 +26,10 @@
  
 }
 .btn{
-    justify-content: space-between;
+   
     display: flex;
-    
-    width: 180px;
+    width: 100%px;
+    gap: 15px;
 
 
 }

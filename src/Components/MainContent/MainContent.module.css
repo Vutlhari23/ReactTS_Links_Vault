@@ -1,7 +1,5 @@
 .main-container{
 
-
-
    
 }
 .header{
@@ -30,4 +28,8 @@
 .empty-state{
    text-align: center;
  
+}
+.link-container{
+   display: flex;
+   gap: 10px;
 }
