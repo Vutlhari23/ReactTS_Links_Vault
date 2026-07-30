@@ -4,7 +4,7 @@ import {Text} from '../Text/Text'
 import { Button } from '../Button/Button'
 import styles from '../Modals/ComfirmModal.module.css'
 import type { LinkItem } from "../../types";
-
+import closeIcon from '../../assets/closeIcon.png'
 type ConfirmProps ={
     id: string,
     onClose: () => void;
@@ -22,7 +22,16 @@ export const ConfirmationModel = ({onClose,onDelete,id}:ConfirmProps) => {
     return (
 
         <ContentContainer className={styles.overlay}>
-            <Text variant='h2'>Are you sure you want to delete?</Text>
+            <div className={styles.content}>
+           <div className={styles['confirm-message']}>   
+            <Text variant='h3'>Are you sure you want to delete?</Text>
+             <img
+           src={closeIcon}
+           className={styles['close-icon-img']}
+           onClick={onClose}
+           />
+            </div >
+            <div className={styles.buttons}>
             <Button
              label='Cancel'
              className={styles['no-btn']}
@@ -36,8 +45,10 @@ export const ConfirmationModel = ({onClose,onDelete,id}:ConfirmProps) => {
              onClick={()=> {onDelete(id); // 4 Deletes the Link  and closes the modal
                 onClose();                //closes the app
              }}
-
+          
             />
+            </div>
+            </div>
 
         </ContentContainer>
     )

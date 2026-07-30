@@ -1,11 +1,13 @@
 import React from 'react'
+import styles from '../Button/Button.module.css'
 
 
 type ButtonProp= {
     className?: string,
     label?: string,
     onClick ?: ()=> void,
-    children?: string,
+    children?: React.ReactNode,
+  
 }
 export const Button = ({className,label,onClick,children}: ButtonProp) => {
   return (
@@ -14,7 +16,7 @@ export const Button = ({className,label,onClick,children}: ButtonProp) => {
      className={className} 
      onClick={onClick}
      
-     style={{ backgroundColor: 'black', color:'white', width:'100px', height:"26px" , borderRadius: "10px"}} >{label}
+    >{label}
      {children}
      </button>
      
