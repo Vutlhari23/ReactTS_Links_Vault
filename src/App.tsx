@@ -86,6 +86,7 @@ closeModal();
   
     links={searchedLinks}
     searchQuery={searchQuery}
+    setSearchquery={setSearchQuery}
     openModal={openModal}
     onEdit={openEditModal}
     onDelete={handleDeleteLink} //1. The MainContent gets the delete function from the App.tsx as a prop

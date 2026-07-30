@@ -14,6 +14,7 @@ import { useState } from "react";
 type Props = {
   links: LinkItem[];
   searchQuery: string,
+  setSearchquery : React.Dispatch<React.SetStateAction<string>>;
   openModal : () => void;
   onEdit : (link:LinkItem)=> void;
   onDelete:(id:string) => void;  // 2.rom the app.tsx
@@ -24,7 +25,7 @@ type Props = {
 
 };
 
-export const MainContent = ({ links, searchQuery,openModal ,onEdit,onDelete}: Props) => {
+export const MainContent = ({ links, searchQuery,openModal ,onEdit,onDelete,setSearchquery}: Props) => {
 
 
 const [showConfirmModal, setShowConfirmModal] = useState(false);
@@ -54,8 +55,10 @@ setShowConfirmModal(false);
           <div className={styles["search-container"]}>
             <TextInput
               type="text"
+              value={searchQuery}
               placeholder="Search titles, links"
               className={styles["search-input"]}
+              onChange={(e)=> setSearchquery(e.target.value)}
             />
           </div>
 
