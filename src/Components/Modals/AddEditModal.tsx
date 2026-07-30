@@ -56,13 +56,15 @@ const handleSubmit = (e : React.FormEvent) =>{
            
            
 
-        </div>
+        </div  >
+        <div className={styles.form} >
         <form  onSubmit={handleSubmit}>
+            
             <TextInput
-                className={styles['input-field']}
+               className={styles['input-field']}
                type="text"
                value={title}
-               label="Title :"
+               label="Title "
                placeholder="e.g., React Official Documentation"
                onChange={(e)=> setTitle(e.target.value)}
             />
@@ -70,7 +72,7 @@ const handleSubmit = (e : React.FormEvent) =>{
                className={styles['input-field']}
                type="text"
                value={url}
-               label="URL :"
+               label="URL "
                placeholder="https://..."
                 onChange={(e)=> setUrl(e.target.value)}
             />
@@ -78,7 +80,7 @@ const handleSubmit = (e : React.FormEvent) =>{
                className={styles['input-field']}
                type="text"
                value={description}
-               label="Description :"
+               label="Description "
                placeholder="Add Notes to  help you  remember this link"
                onChange={(e)=> setDescription(e.target.value)}
             />
@@ -86,7 +88,7 @@ const handleSubmit = (e : React.FormEvent) =>{
                className={styles['input-field']}
                type="text"
                value={optionalTags}
-               label="Optional tags:"
+               label="Optional tags"
                placeholder="e.g., #React LearningTutorial"
                onChange={(e)=> setOptionalTags(e.target.value)}
             />
@@ -97,6 +99,7 @@ const handleSubmit = (e : React.FormEvent) =>{
             />
         </form>
         </div>
+    </div>
     </div>
 
    )
