@@ -1,99 +1,140 @@
 
-import styles from "./MainContent.module.css";
-import type { LinkItem } from "../../App";
-import No_Link from '../../assets/NoLink.webp'
-
-
+import ContentContainer from "../ContentContainer/ContentContainer";
+import styles from "../MainContent/MainContent.module.css";
+import { Text } from "../Text/Text";
+import { Button } from "../Button/Button";
+import type { LinkItem } from "../../types";
+import { LinkCard } from "../LinkCard/LinkCard";
+import { TextInput } from "../TextInput/TextInput";
+import No_Link from "../../assets/NoLink.webp";
+import SearchNotFound from "../../assets/SearchNotFound.jpg";
+import { ConfirmationModel } from "../Modals/ConfirmationModal";
+import { useState } from "react";
 
 type Props = {
   links: LinkItem[];
-  searchQuery: string;
-  setSearchQuery: (query: string) => void;
-  onOpenAdd: () => void;
-  onDelete: (id: string) => void,
-  onEdit: (link: LinkItem) => void;
+  searchQuery: string,
+  openModal : () => void;
+  onEdit : (link:LinkItem)=> void;
+  onDelete:(id:string) => void;
+
   
+
+  
+
 };
 
-export const MainContent = ({ links, onDelete, onEdit,onOpenAdd,searchQuery,setSearchQuery}: Props) => {
+export const MainContent = ({ links, searchQuery,openModal ,onEdit,onDelete}: Props) => {
+
+
+const [showConfirmModal, setShowConfirmModal] = useState(false);
+const [linkToDelete, setLinkToDelete] = useState<string | null>(null);
+
+const openConfirmModal = (id: string) => {
+setLinkToDelete(id);
+setShowConfirmModal(true);
+};
+
+const closeConfirmModal = () => {
+setLinkToDelete(null);
+setShowConfirmModal(false);
+};
+
+
+
+
+
+
+
+
+
+
+
   return (
-    <main className={styles.mainContainer}>
-      <div className={styles.content}>
-        <div className={styles.headerRow}>
-          
-          <h2>HyperHUb</h2>
+    <ContentContainer className={styles["main-content"]}>
+      <div className={styles.header}>
+        <div>
+          <Text variant="h2">HyperHub 2.0</Text>
+        </div>
 
-
-
-          <div className={styles['nav-left']}>
-           <div className={styles.searchContainer}>
-            <i className={`bi bi-search`} ></i>
-            <input
+        <div className={styles["top-left"]}>
+          <div className={styles["search-container"]}>
+            <TextInput
               type="text"
-              placeholder="Search , titles, links..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className={styles.searchInput}
+              placeholder="Search titles, links"
+              className={styles["search-input"]}
             />
           </div>
-           <div className={styles.addContainer}>
-            <button className={styles.addBtn} onClick={onOpenAdd}>
-             <i className="bi bi-plus" style={{ fontSize: "25px" }}></i>
-               New Link
-            </button>
+
+          <div className={styles["add-container"]}>
+            <Button
+              className={styles["add-btn"]}
+              label="Add New Link"
+              onClick={openModal}
+            />
           </div>
-          </div>
-      </div>
-
-        <div className={styles.linksList}>
-          {links.length === 0 ? (
-            <div className={styles.emptyState}>
-              <img
-                src={No_Link}
-                alt="Links not avilable"
-                className={styles.emptyImage}
-              />
-              <p>
-                No links in your hub yet. Click "+ New Link" to get started.
-              </p>
-              
-
-
-               <div className={styles.addContainer}>
-            <button className={styles.addBtn} onClick={onOpenAdd}>
-              <i className="bi bi-plus" style={{ fontSize: "25px" }}></i>
-               New Link
-            </button>
-          </div> 
-            </div>
-          ) : (
-            links.map((link) => (
-              <div key={link.id} className={styles.linkCard}>
-                <h3>{link.title}</h3>
-                <strong>Link (URL):  </strong>    <a href={link.url} target="_blank" rel="noreferrer">
-                  {link.url}
-                </a><br/>
-                <strong>Description:  </strong> <p>{link.description}</p>{link.tags && <span className={styles.tag}>{link.tags}</span>}
-                <div className={styles.cardActions}>
-                  <button
-                    className={styles.actionBtn}
-                    onClick={() => onEdit(link)}
-                  >
-                    Edit
-                  </button>
-
-                  <button
-                    className={styles.actionBtn}
-                    onClick={() => onDelete(link.id)}
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
-            ))
-          )}
         </div>
       </div>
-    </main>
+
+      <div className={styles.LinksList}>
+        {links.length === 0 ? (
+          searchQuery.trim() !== "" ? (
+            <div className={styles["empty-state"]}>
+              <img
+                src={SearchNotFound}
+                alt="No Search Results"
+                className={styles["empty-state-img"]}
+              />
+
+              <Text variant="h2">No Results Found</Text>
+              <Text variant="p">
+                No links matching "{searchQuery}"
+              </Text>
+            </div>
+          ) : (
+            <div className={styles["empty-state"]}>
+              <img
+                src={No_Link}
+                alt="Links not available"
+                className={styles["empty-state-img"]}
+              />
+
+              <Text variant="h5">
+                No links in your hub yet. Click "Add New Link" to get started.
+              </Text>
+
+              <div className={styles["add-container"]}>
+               <button onClick={openModal}>
+  Add New Link
+</button>
+              </div>
+            </div>
+          )
+        ) : (
+          links.map((link) => (
+            <LinkCard
+              onEdit={onEdit}
+              openModal={openModal}
+              key={link.id}
+              data={link}
+              onDelete={openConfirmModal}
+              
+              
+             
+            />
+          ))
+        )}
+      </div>
+      {showConfirmModal && (
+  <ConfirmationModel
+   onClose={closeConfirmModal}
+   onDelete={onDelete}
+   id={linkToDelete!}
+    
+  />
+)}
+      
+    
+    </ContentContainer>
   );
 };
