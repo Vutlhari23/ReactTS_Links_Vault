@@ -4,16 +4,18 @@ import React from 'react'
 type ButtonProp= {
     className?: string,
     label?: string,
-    onClick ?: ()=> void;
+    onClick ?: ()=> void,
+    children?: string,
 }
-export const Button = ({className,label,onClick}: ButtonProp) => {
+export const Button = ({className,label,onClick,children}: ButtonProp) => {
   return (
      <>
      <button 
      className={className} 
      onClick={onClick}
      
-     style={{ backgroundColor: 'white', color:'black', width:'80px', height:"35px" , borderRadius: "10px"}} >{label}
+     style={{ backgroundColor: 'black', color:'white', width:'100px', height:"26px" , borderRadius: "10px"}} >{label}
+     {children}
      </button>
      
      

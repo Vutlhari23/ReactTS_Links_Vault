@@ -4,6 +4,7 @@ import {Text} from '../Text/Text'
 import { useState } from "react";
 import { Button } from "../Button/Button";
 import { TextInput } from "../TextInput/TextInput";
+import closeIcon from '../../assets/closeIcon.png'
 
 
 type ModalProps ={
@@ -44,16 +45,21 @@ const handleSubmit = (e : React.FormEvent) =>{
 
    return (
     <div className={styles.overlay}>
+        <div className={styles.content}>
         <div className={styles['modal-header']}>
            <Text variant='h2'>{selectedLink? " Edit" : "Add New Link"}</Text>
-           <Button
-           className={styles['close-btn']}
+           <img
+           src={closeIcon}
+           className={styles['close-icon-img']}
            onClick={onClose}
            />
+           
+           
 
         </div>
         <form  onSubmit={handleSubmit}>
             <TextInput
+                className={styles['input-field']}
                type="text"
                value={title}
                label="Title :"
@@ -61,6 +67,7 @@ const handleSubmit = (e : React.FormEvent) =>{
                onChange={(e)=> setTitle(e.target.value)}
             />
             <TextInput
+               className={styles['input-field']}
                type="text"
                value={url}
                label="URL :"
@@ -68,6 +75,7 @@ const handleSubmit = (e : React.FormEvent) =>{
                 onChange={(e)=> setUrl(e.target.value)}
             />
             <TextInput
+               className={styles['input-field']}
                type="text"
                value={description}
                label="Description :"
@@ -75,6 +83,7 @@ const handleSubmit = (e : React.FormEvent) =>{
                onChange={(e)=> setDescription(e.target.value)}
             />
             <TextInput
+               className={styles['input-field']}
                type="text"
                value={optionalTags}
                label="Optional tags:"
@@ -87,6 +96,7 @@ const handleSubmit = (e : React.FormEvent) =>{
             label= {selectedLink? "Update" : "Save Link"}
             />
         </form>
+        </div>
     </div>
 
    )

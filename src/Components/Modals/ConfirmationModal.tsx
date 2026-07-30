@@ -8,7 +8,7 @@ import type { LinkItem } from "../../types";
 type ConfirmProps ={
     id: string,
     onClose: () => void;
-    onDelete: (id:string) => void;
+    onDelete: (id:string) => void; //receives id and function as a prop
 }
 
 
@@ -33,16 +33,10 @@ export const ConfirmationModel = ({onClose,onDelete,id}:ConfirmProps) => {
              label='Yes Delete'
              className={styles['yes-btn']}
              
-             onClick={()=> {onDelete(id);
-                onClose();
+             onClick={()=> {onDelete(id); // 4 Deletes the Link  and closes the modal
+                onClose();                //closes the app
              }}
-            //On delete had to get somewhere here
-            //the problem is where are we doing to get the id of the 
-             
 
-         
-            
-            
             />
 
         </ContentContainer>

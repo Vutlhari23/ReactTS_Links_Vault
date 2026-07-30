@@ -43,8 +43,9 @@ return(
         <Button 
         className={styles['delete-btn']}
          label='Delete'
-         onClick={()=> onDelete(data.id)} //opens the Comfirmn Delete Modal
+         onClick={()=> onDelete(data.id)} //Open the modal
         />
+        
       </ContentContainer>
     </ContentContainer>
 

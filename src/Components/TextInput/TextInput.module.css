@@ -1,1 +1,10 @@
+.input-container{
+    column-gap: 10px;
+   
 
+}
+.input{
+    width: 100%;
+    height:25px;
+    border-radius: 12px;
+}
