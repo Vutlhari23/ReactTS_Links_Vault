@@ -18,7 +18,7 @@ Technologies Used.
  * Local Storage
  * React Hooks
 
-Follow the following instructions to run the project.
+Instructions to run the project.
 
 
  1. Clone the Repository
@@ -38,20 +38,7 @@ Follow the following instructions to run the project.
    npm run dev
    
 
-📂 Project Structure
-src/
-├── assets/
-├── components/
-│   ├── Button/
-│   ├── ContentContainer/
-│   ├── LinkCard/
-│   ├── MainContent/
-│   ├── Modals/
-│   ├── Navbar/
-│   └── Text/
-├── types/
-├── App.tsx
-└── main.tsx
+
    
 
 
