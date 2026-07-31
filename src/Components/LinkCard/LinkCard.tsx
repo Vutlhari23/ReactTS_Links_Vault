@@ -32,7 +32,7 @@ return(
   <article className={styles.card}>
     <ContentContainer className={styles['card-content']}>
       <Text variant='h2'>{data.title}</Text>
-      <Text variant='p'>{data.url}</Text>
+      <a href={data.url } target='_blank' rel='noreferrer'>{data.url}</a>
       <Text variant='p'>{data.description}</Text>
       <Text variant='p'>{data.optionalTags}</Text> 
       <ContentContainer className={styles.btn}>

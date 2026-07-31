@@ -10,7 +10,7 @@
 
    
 
-.card-content p,h2{
+.card-content p,h2,a{
 
   white-space: nowrap;
   overflow: hidden;
@@ -21,9 +21,17 @@
 
   white-space: normal;
   overflow: visible;
-  word-break: break-all;
+  text-overflow:ellipsis;
   
  
+}
+.card-content a{
+  text-decoration: none;
+  white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
+
+
 }
 .btn{
    

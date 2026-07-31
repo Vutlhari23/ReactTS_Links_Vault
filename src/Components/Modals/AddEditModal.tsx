@@ -44,9 +44,12 @@ const handleSubmit = (e : React.FormEvent) =>{
 
 
    return (
-    <div className={styles.overlay}>
+    <div className={styles.overlay} onClick={onClose}>
+        
         <div className={styles.content}>
-        <div className={styles['modal-header']}>
+        <div className={styles['modal-header']} 
+        
+        onClick={(e) => e.stopPropagation()}>
            <Text variant='h2'>{selectedLink? " Edit" : "Add New Link"}</Text>
            <img
            src={closeIcon}

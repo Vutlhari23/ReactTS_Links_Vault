@@ -21,8 +21,9 @@ export const ConfirmationModel = ({onClose,onDelete,id}:ConfirmProps) => {
 
     return (
 
-        <ContentContainer className={styles.overlay}>
-            <div className={styles.content}>
+        <ContentContainer className={styles.overlay} onClick={onClose}>
+            <div className={styles.content} 
+            onClick={(e) => e.stopPropagation()}>
            <div className={styles['confirm-message']}>   
             <Text variant='h3'>Are you sure you want to delete?</Text>
              <img
